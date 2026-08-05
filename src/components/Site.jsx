@@ -50,90 +50,122 @@ export function HeroSection() {
         </a>
       </FadeIn>
 
-      <div className="hero3-top">
-        <div className="hero3-list">
-          {['/ PERMANENT STAFFING', '/ CONTRACT STAFFING', '/ HR CONSULTING & PAYROLL'].map((s, i) => (
-            <FadeIn as="p" key={s} delay={0.15 + i * 0.12} className="mono-line">
-              {s}
-            </FadeIn>
-          ))}
-        </div>
-        <FadeIn as="p" delay={0.3} className="hero3-intro">
-          End-to-end workforce solutions with speed, precision and full statutory compliance — across India.
+      {/* living background layer: consultant over fluid canvas */}
+      <FadeIn delay={0.5} y={40} className="hero3-person">
+        <img src={consultant} alt="SMN Phoenix consultant" />
+      </FadeIn>
+
+      {/* four-column meta grid (editorial "face") */}
+      <div className="meta3">
+        <FadeIn delay={0.15}>
+          <h2 className="meta3-h">
+            SMN
+            <em className="serif-it">Phoenix</em>
+          </h2>
+          <p className="meta3-blurb">
+            * Building People…
+            <br />
+            Empowering Businesses —
+            <br />
+            full-spectrum HR partner,
+            <br />
+            HQ Kalaburagi · PAN-India
+          </p>
+        </FadeIn>
+        <FadeIn delay={0.25}>
+          <h2 className="meta3-h">
+            TALENT &
+            <em className="serif-it">Workforce</em>
+          </h2>
+        </FadeIn>
+        <FadeIn delay={0.35}>
+          <p className="meta3-label">What we do</p>
+          <p className="meta3-body">End-to-end workforce solutions for SMEs and large industrial corporations across India.</p>
+        </FadeIn>
+        <FadeIn delay={0.45}>
+          <p className="meta3-label">Services</p>
+          <ul className="meta3-list">
+            <li>Permanent Staffing</li>
+            <li>Contract Staffing</li>
+            <li>Outsourcing</li>
+            <li>HR Consulting</li>
+            <li>Training & Development</li>
+            <li>Payroll & Compliance</li>
+          </ul>
         </FadeIn>
       </div>
 
-      <div className="hero3-bottom">
-        <div className="hero3-left">
-          <FadeIn delay={0.1} className="hero3-badge lg-glass">
-            <i />
-            Strategic HR Partner · PAN-India
-          </FadeIn>
-          <CharHeading
-            className="hero3-h1"
-            lines={[
-              { text: 'Building people,' },
-              { text: 'empowering ' },
-              { text: 'businesses.', serif: true },
-            ]}
-          />
-          <FadeIn as="p" delay={0.9} className="hero3-sub">
-            One leader or a thousand deployed workers — SMN Phoenix handles the complete employee lifecycle.
-          </FadeIn>
-          <FadeIn delay={1.1} className="hero3-ctas">
-            <Magnet padding={90} strength={4}>
-              <a className="btn-dark big" href="#contact">
-                Hire Talent
-              </a>
-            </Magnet>
-            <a className="btn-glass lg-glass" href="#services">
-              Explore Services
-            </a>
-          </FadeIn>
-        </div>
+      <div className="hero3-spacer" />
 
-        <div className="hero3-right">
-          <FadeIn delay={0.55} y={40} className="hero3-person">
-            <img src={consultant} alt="SMN Phoenix consultant" />
-          </FadeIn>
-          <FadeIn delay={0.95} className="asha-card lg-glass">
+      {/* bottom composition: giant mixed-font headline + actions */}
+      <div className="hero3-bot">
+        <CharHeading
+          className="hero3-h1"
+          lines={[
+            { text: 'BUILDING THE' },
+            { text: 'people behind', serif: true },
+            { text: 'BOLD & GROWING' },
+            { text: 'businesses.', serif: true },
+          ]}
+        />
+        <div className="hero3-actions">
+          <Magnet padding={80} strength={4}>
+            <a className="btn-dark big" href="#contact">
+              Hire Talent →
+            </a>
+          </Magnet>
+          <FadeIn delay={0.8} className="asha-mini lg-glass">
             <img src={portrait} alt="Asha" />
             <div>
               <b>Talk with Asha</b>
-              <small>Virtual hiring guide</small>
-              <a href="#asha" className="btn-dark tiny">
-                Ask Asha →
-              </a>
+              <a href="#asha">Ask a question →</a>
             </div>
+          </FadeIn>
+          <FadeIn delay={1} className="cred3">
+            <span>
+              <b>LLP</b> ACP-4314
+            </span>
+            <span>
+              <b>GST</b> Registered
+            </span>
+            <span>
+              <b>PAN</b> India
+            </span>
           </FadeIn>
         </div>
       </div>
-      <FadeIn delay={1.4} className="scroll3" aria-hidden="true">
-        <i />
-        Scroll
+
+      <FadeIn delay={1.2} className="hero3-strip">
+        <p>
+          Open for staffing mandates — permanent, contract, RPO.{' '}
+          <a href="#contact" className="strip-link">
+            Schedule a call
+          </a>
+        </p>
+        <p className="strip-right">5 core services • 6 verticals • 7 industries</p>
       </FadeIn>
     </section>
   )
 }
 
-/* ─────────────────── MARQUEE — 14 unique tiles, scroll-driven ─────────────────── */
+/* ─────────────────── MARQUEE — 14 unique cards, scroll-driven ─────────────────── */
 const ROW1 = [
-  ['Healthcare & Life Sciences', team],
-  ['Technology & IT', art01],
-  ['Industrial & Manufacturing', techtouch],
-  ['Infrastructure & Logistics', art02],
-  ['Financial Services', art03],
-  ['Public Sector & Social', art04],
-  ['Consumer & Retail', art05],
+  ['Healthcare & Life Sciences', 'Hospitals, diagnostics, pharma', 'heart', team],
+  ['Technology & IT', 'IT, ITES, AI, cloud, cybersecurity', 'chip', art01],
+  ['Industrial & Manufacturing', 'Automobile, aerospace, FMCG', 'factory', techtouch],
+  ['Infrastructure & Logistics', 'Construction, warehousing, e-commerce', 'truck', art02],
+  ['Financial Services', 'Banking, insurance, NBFCs', 'bank', art03],
+  ['Public Sector & Social', 'Government projects, NGOs, education', 'flag', art04],
+  ['Consumer & Retail', 'Retail, hospitality, customer service', 'cart', art05],
 ]
 const ROW2 = [
-  ['PAN-India Hiring', network],
-  ['Campus Recruitment', art06],
-  ['Executive Search', art07],
-  ['Payroll & Compliance', art08],
-  ['HR Consulting', art09],
-  ['Training & Development', art10],
-  ['Background Verification', art11],
+  ['PAN-India Hiring', 'Recruitment & placement nationwide', 'map', network],
+  ['Campus Recruitment', 'Engineering, MBA, ITI, nursing colleges', 'grad', art06],
+  ['Executive Search', 'CXO & leadership hiring', 'search', art07],
+  ['Payroll & Compliance', 'PF · ESI · CLRA · POSH', 'shield', art08],
+  ['HR Consulting', 'Policy, KPIs, HR audits', 'pen', art09],
+  ['Training & Development', 'Soft skills & leadership programs', 'book', art10],
+  ['Background Verification', 'Police, employment, education checks', 'check', art11],
 ]
 export function MarqueeSection() {
   const secRef = useRef(null)
@@ -158,9 +190,16 @@ export function MarqueeSection() {
     }
   }, [])
   const row = (arr) =>
-    [...arr, ...arr].map(([label, img], i) => (
+    [...arr, ...arr].map(([label, desc, icon, img], i) => (
       <div className="tile3" key={i} style={{ backgroundImage: `url(${img})` }}>
-        <span>{label}</span>
+        <div className="t3-ic">
+          <Icon name={icon} />
+        </div>
+        <img className="t3-mark" src={logoNavy} alt="" />
+        <div className="t3-txt">
+          <span>{label}</span>
+          <small>{desc}</small>
+        </div>
       </div>
     ))
   return (

@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react'
 
 const BLOBS = [
-  { c: [143, 217, 214], r: 300, x: 0.85, y: 0.15, sx: 0.00021, sy: 0.00017, ph: 0 },
+  { c: [168, 205, 240], r: 300, x: 0.85, y: 0.15, sx: 0.00021, sy: 0.00017, ph: 0 },
   { c: [169, 205, 236], r: 280, x: 0.1, y: 0.85, sx: 0.00017, sy: 0.00023, ph: 2.1 },
-  { c: [191, 238, 234], r: 200, x: 0.45, y: 0.4, sx: 0.00025, sy: 0.00019, ph: 4.2 },
+  { c: [186, 218, 246], r: 200, x: 0.45, y: 0.4, sx: 0.00025, sy: 0.00019, ph: 4.2 },
   { c: [126, 200, 227], r: 230, x: 0.7, y: 0.75, sx: 0.00019, sy: 0.00026, ph: 1.3 },
-  { c: [96, 196, 190], r: 260, x: 0.25, y: 0.2, sx: 0.00023, sy: 0.0002, ph: 3.4 },
+  { c: [140, 188, 236], r: 260, x: 0.25, y: 0.2, sx: 0.00023, sy: 0.0002, ph: 3.4 },
 ]
 const PARTICLES = 34
 
@@ -88,7 +88,7 @@ export default function FluidCanvas() {
         if (p.x > W + 10) p.x = -10
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.r, 0, 7)
-        ctx.fillStyle = `rgba(47,179,174,${p.o})`
+        ctx.fillStyle = `rgba(58,155,220,${p.o})`
         ctx.fill()
       }
       raf = requestAnimationFrame(draw)
