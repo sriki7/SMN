@@ -1,61 +1,144 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { FadeIn, Magnet, ContactButton, GhostButton, AnimatedText } from './Fx.jsx'
+import { FadeIn, Magnet, AnimatedText, CharHeading } from './Fx.jsx'
+import FluidCanvas from './FluidCanvas.jsx'
 import Icon from './Icon.jsx'
-import { company, industries, services, verticalCards, guide, aboutText } from '../data/content.js'
+import { company, services, guide, aboutText } from '../data/content.js'
 import consultant from '../assets/consultant.webp'
 import portrait from '../assets/consultant-portrait.webp'
-import markTeal from '../assets/logo-mark-white.png'
-import markNavy from '../assets/logo-mark-navy.png'
-import orbTeal from '../assets/orb-teal.png'
-import orbBlue from '../assets/orb-blue.png'
+import logoNavy from '../assets/logo-mark-navy.png'
 import team from '../assets/team.webp'
 import techtouch from '../assets/techtouch.webp'
 import network from '../assets/network.webp'
+import art01 from '../assets/art01.webp'
+import art02 from '../assets/art02.webp'
+import art03 from '../assets/art03.webp'
+import art04 from '../assets/art04.webp'
+import art05 from '../assets/art05.webp'
+import art06 from '../assets/art06.webp'
+import art07 from '../assets/art07.webp'
+import art08 from '../assets/art08.webp'
+import art09 from '../assets/art09.webp'
+import art10 from '../assets/art10.webp'
+import art11 from '../assets/art11.webp'
+import banner1 from '../assets/banner1.webp'
+import banner2 from '../assets/banner2.webp'
+import banner3 from '../assets/banner3.webp'
+import banner4 from '../assets/banner4.webp'
+import banner5 from '../assets/banner5.webp'
 
-/* ─────────────────────────── HERO ─────────────────────────── */
+/* ─────────────────────────── NAV (floating liquid-glass pill) ─────────────────────────── */
 export function HeroSection() {
   return (
-    <section className="hero2" id="top">
-      <FadeIn as="nav" y={-20} className="nav2">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#verticals">Verticals</a>
-        <a href="#asha">Ask Asha</a>
-        <a href="#contact">Contact</a>
+    <section className="hero3" id="top">
+      <FluidCanvas />
+      <FadeIn as="nav" y={-16} className="nav3 lg-glass">
+        <a className="brand3" href="#top">
+          <img src={logoNavy} alt="SMN Phoenix logo" />
+          <span>
+            SMN <b>Phoenix</b>
+          </span>
+        </a>
+        <div className="nav3-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#verticals">Verticals</a>
+          <a href="#asha">Ask Asha</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a className="btn-dark" href="#contact">
+          Hire Talent
+        </a>
       </FadeIn>
 
-      <div className="hero2-head">
-        <FadeIn as="h1" delay={0.15} y={40} className="hero-heading">
-          SMN&nbsp;PHOENIX
+      <div className="hero3-top">
+        <div className="hero3-list">
+          {['/ PERMANENT STAFFING', '/ CONTRACT STAFFING', '/ HR CONSULTING & PAYROLL'].map((s, i) => (
+            <FadeIn as="p" key={s} delay={0.15 + i * 0.12} className="mono-line">
+              {s}
+            </FadeIn>
+          ))}
+        </div>
+        <FadeIn as="p" delay={0.3} className="hero3-intro">
+          End-to-end workforce solutions with speed, precision and full statutory compliance — across India.
         </FadeIn>
       </div>
 
-      <Magnet padding={150} strength={3} className="hero2-portrait">
-        <FadeIn delay={0.6} y={30}>
-          <img src={consultant} alt="SMN Phoenix consultant" />
-        </FadeIn>
-      </Magnet>
+      <div className="hero3-bottom">
+        <div className="hero3-left">
+          <FadeIn delay={0.1} className="hero3-badge lg-glass">
+            <i />
+            Strategic HR Partner · PAN-India
+          </FadeIn>
+          <CharHeading
+            className="hero3-h1"
+            lines={[
+              { text: 'Building people,' },
+              { text: 'empowering ' },
+              { text: 'businesses.', serif: true },
+            ]}
+          />
+          <FadeIn as="p" delay={0.9} className="hero3-sub">
+            One leader or a thousand deployed workers — SMN Phoenix handles the complete employee lifecycle.
+          </FadeIn>
+          <FadeIn delay={1.1} className="hero3-ctas">
+            <Magnet padding={90} strength={4}>
+              <a className="btn-dark big" href="#contact">
+                Hire Talent
+              </a>
+            </Magnet>
+            <a className="btn-glass lg-glass" href="#services">
+              Explore Services
+            </a>
+          </FadeIn>
+        </div>
 
-      <div className="hero2-bottom">
-        <FadeIn as="p" delay={0.35} y={20} className="hero2-tag">
-          Your strategic HR partner for end-to-end workforce solutions across India
-        </FadeIn>
-        <FadeIn delay={0.5} y={20}>
-          <ContactButton label="Hire Talent" />
-        </FadeIn>
+        <div className="hero3-right">
+          <FadeIn delay={0.55} y={40} className="hero3-person">
+            <img src={consultant} alt="SMN Phoenix consultant" />
+          </FadeIn>
+          <FadeIn delay={0.95} className="asha-card lg-glass">
+            <img src={portrait} alt="Asha" />
+            <div>
+              <b>Talk with Asha</b>
+              <small>Virtual hiring guide</small>
+              <a href="#asha" className="btn-dark tiny">
+                Ask Asha →
+              </a>
+            </div>
+          </FadeIn>
+        </div>
       </div>
+      <FadeIn delay={1.4} className="scroll3" aria-hidden="true">
+        <i />
+        Scroll
+      </FadeIn>
     </section>
   )
 }
 
-/* ─────────────────── MARQUEE (scroll-driven rows) ─────────────────── */
-const TILES = [...industries, 'PAN-India Hiring', 'Campus Recruitment', 'Executive Search', 'Payroll & Compliance']
+/* ─────────────────── MARQUEE — 14 unique tiles, scroll-driven ─────────────────── */
+const ROW1 = [
+  ['Healthcare & Life Sciences', team],
+  ['Technology & IT', art01],
+  ['Industrial & Manufacturing', techtouch],
+  ['Infrastructure & Logistics', art02],
+  ['Financial Services', art03],
+  ['Public Sector & Social', art04],
+  ['Consumer & Retail', art05],
+]
+const ROW2 = [
+  ['PAN-India Hiring', network],
+  ['Campus Recruitment', art06],
+  ['Executive Search', art07],
+  ['Payroll & Compliance', art08],
+  ['HR Consulting', art09],
+  ['Training & Development', art10],
+  ['Background Verification', art11],
+]
 export function MarqueeSection() {
   const secRef = useRef(null)
   const r1 = useRef(null)
   const r2 = useRef(null)
-
   useEffect(() => {
     let raf = 0
     const onScroll = () => {
@@ -63,8 +146,8 @@ export function MarqueeSection() {
       raf = requestAnimationFrame(() => {
         const top = secRef.current?.offsetTop ?? 0
         const off = (window.scrollY - top + window.innerHeight) * 0.3
-        if (r1.current) r1.current.style.transform = `translateX(${off - 200}px)`
-        if (r2.current) r2.current.style.transform = `translateX(${-(off - 200)}px)`
+        if (r1.current) r1.current.style.transform = `translateX(${off - 260}px)`
+        if (r2.current) r2.current.style.transform = `translateX(${-(off - 260)}px)`
       })
     }
     onScroll()
@@ -74,69 +157,146 @@ export function MarqueeSection() {
       window.removeEventListener('scroll', onScroll)
     }
   }, [])
-
-  const row = (arr, imgs) =>
-    [...arr, ...arr, ...arr].map((n, i) => (
-      <div className="mtile" key={i} style={imgs && imgs[i % arr.length] ? { backgroundImage: `url(${imgs[i % arr.length]})` } : undefined}>
-        <span>{n}</span>
+  const row = (arr) =>
+    [...arr, ...arr].map(([label, img], i) => (
+      <div className="tile3" key={i} style={{ backgroundImage: `url(${img})` }}>
+        <span>{label}</span>
       </div>
     ))
-
-  const imgsA = [techtouch, null, team, null, network, null]
-  const imgsB = [null, network, null, techtouch, null, team]
   return (
-    <section className="marq2" ref={secRef}>
-      <div className="mrow" ref={r1}>
-        {row(TILES.slice(0, 6), imgsA)}
+    <section className="marq3" ref={secRef} aria-label="Industries and services">
+      <div className="mrow3" ref={r1}>
+        {row(ROW1)}
       </div>
-      <div className="mrow" ref={r2}>
-        {row(TILES.slice(5), imgsB)}
+      <div className="mrow3" ref={r2}>
+        {row(ROW2)}
       </div>
     </section>
   )
 }
 
-/* ─────────────────────────── ABOUT ─────────────────────────── */
+/* ─────────────────── ABOUT — soft-tint overlap section (Drift pattern) ─────────────────── */
 export function AboutSection() {
   return (
-    <section className="about2" id="about">
-      <FadeIn className="deco d-tl" delay={0.1} x={-80} y={0} duration={0.9}>
-        <img src={markTeal} alt="" />
+    <section className="about3" id="about">
+      <FadeIn as="p" className="about3-lede">
+        We don't just supply manpower — we become your strategic HR partner, ensuring your operations run without
+        interruption.
       </FadeIn>
-      <FadeIn className="deco d-bl" delay={0.25} x={-80} y={0} duration={0.9}>
-        <img src={orbTeal} alt="" />
+      <FadeIn delay={0.15} className="about3-btns">
+        <a className="pill-dark" href={`tel:${company.phones[0].replace(/\s/g, '')}`}>
+          <span className="pill-ic">
+            <Icon name="phone" />
+          </span>
+          Call us
+        </a>
+        <a className="pill-soft" href={`mailto:${company.email}`}>
+          <span className="pill-ic">
+            <Icon name="mail" />
+          </span>
+          Email us
+        </a>
       </FadeIn>
-      <FadeIn className="deco d-tr" delay={0.15} x={80} y={0} duration={0.9}>
-        <img src={orbBlue} alt="" />
-      </FadeIn>
-      <FadeIn className="deco d-br" delay={0.3} x={80} y={0} duration={0.9}>
-        <img src={markTeal} alt="" style={{ transform: 'scaleX(-1)' }} />
-      </FadeIn>
-
-      <FadeIn as="h2" y={40} className="hero-heading giant">
-        About us
-      </FadeIn>
-      <AnimatedText className="about2-text" text={aboutText} />
-      <ContactButton label="Partner With Us" />
+      <div className="about3-divider" aria-hidden="true">
+        <i />
+        <span />
+        <i />
+      </div>
+      <div className="about3-bottom">
+        <FadeIn className="about3-mark">
+          <img src={logoNavy} alt="SMN Phoenix" />
+          <small>
+            Building
+            <br />
+            People
+          </small>
+        </FadeIn>
+        <AnimatedText className="about3-big" text={aboutText} />
+      </div>
     </section>
   )
 }
 
-/* ─────────────────────── SERVICES (white) ─────────────────────── */
+/* ─────────── SERVICES — sticky left rail + scrolling glass cards ─────────── */
+const BANNERS = [banner1, banner2, banner3, banner4, banner5]
 export function ServicesSection() {
+  const [active, setActive] = useState(0)
+  const cardRefs = useRef([])
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (es) =>
+        es.forEach((e) => {
+          if (e.isIntersecting) setActive(Number(e.target.dataset.i))
+        }),
+      { threshold: 0.6 },
+    )
+    cardRefs.current.forEach((el) => el && io.observe(el))
+    return () => io.disconnect()
+  }, [])
+  const goTo = (i) => cardRefs.current[i]?.scrollIntoView({ behavior: 'smooth', block: 'center' })
   return (
-    <section className="services2" id="services">
-      <FadeIn as="h2" y={40} className="giant dark-head">
-        Services
+    <section className="svc3" id="services">
+      <div className="svc3-grid">
+        <div className="svc3-rail">
+          <FadeIn as="h2" className="h2-3">
+            The complete employee lifecycle, <em className="serif-it">one partner.</em>
+          </FadeIn>
+          <div className="svc3-nav">
+            {services.map((s, i) => (
+              <button key={s.num} className={active === i ? 'on' : ''} onClick={() => goTo(i)}>
+                <span>{s.num}</span> {s.title}
+              </button>
+            ))}
+          </div>
+          <FadeIn className="svc3-railfoot">
+            <p>From hiring to training, compliance to consulting.</p>
+            <a className="btn-dark" href="#contact">
+              Hire Talent
+            </a>
+          </FadeIn>
+        </div>
+        <div className="svc3-cards">
+          {services.map((s, i) => (
+            <FadeIn key={s.num} x={64} y={0} className="svc3-card lg-glass">
+              <div ref={(el) => (cardRefs.current[i] = el)} data-i={i}>
+                <div className="svc3-banner" style={{ backgroundImage: `url(${BANNERS[i]})` }}>
+                  <img src={logoNavy} alt="" />
+                </div>
+                <div className="svc3-body">
+                  <span className="mono-line">{s.num}</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─────────────────── VERTICALS — Apple bento (text glass tiles) ─────────────────── */
+const VERTS = [
+  ['Healthcare Staffing', 'Doctors, nurses, lab technicians, radiographers, pharmacists, OT technicians.'],
+  ['IT Staffing', 'Software, AI, cybersecurity, cloud, data science, SAP & ERP for tech and GCCs.'],
+  ['Manufacturing', 'Machine operators, quality engineers, production, maintenance, stores & purchase.'],
+  ['Government Projects', 'Data entry operators, health workers, district coordinators, survey teams.'],
+  ['Campus Recruitment', 'Engineering, MBA, ITI, diploma, nursing and paramedical colleges.'],
+  ['International', 'Middle East, Africa, Singapore, Malaysia — subject to licensing requirements.'],
+]
+export function VerticalsSection() {
+  return (
+    <section className="vert3" id="verticals">
+      <FadeIn as="h2" className="h2-3 center">
+        Where we <em className="serif-it">lead.</em>
       </FadeIn>
-      <div className="svc-list">
-        {services.map((s, i) => (
-          <FadeIn className="svc-item" key={s.num} delay={i * 0.1}>
-            <span className="svc-num">{s.num}</span>
-            <div>
-              <h3>{s.title}</h3>
-              <p>{s.text}</p>
-            </div>
+      <div className="vert3-grid">
+        {VERTS.map(([t, d], i) => (
+          <FadeIn key={t} delay={(i % 3) * 0.1} className="vert3-tile lg-glass">
+            <img src={logoNavy} alt="" />
+            <h3>{t}</h3>
+            <p>{d}</p>
           </FadeIn>
         ))}
       </div>
@@ -144,60 +304,7 @@ export function ServicesSection() {
   )
 }
 
-/* ─────────────── VERTICALS (sticky stacking cards) ─────────────── */
-function StackCard({ v, index, total, progress, range, targetScale }) {
-  const scale = useTransform(progress, range, [1, targetScale])
-  return (
-    <div className="stack-slot" style={{ top: `${index * 28}px` }}>
-      <motion.div className="stack-card" style={{ scale }}>
-        <div className="sc-top">
-          <span className="svc-num light">{v.num}</span>
-          <div className="sc-meta">
-            <small>{v.cat}</small>
-            <h3>{v.title}</h3>
-          </div>
-          <GhostButton label="Hire Talent" />
-        </div>
-        <p className="sc-desc">{v.text}</p>
-        <div className="sc-imgs">
-          <div className="sc-col1">
-            <img src={v.imgs[0]} alt="" loading="lazy" />
-            <img src={v.imgs[1]} alt="" loading="lazy" />
-          </div>
-          <div className="sc-col2">
-            <img src={v.imgs[2]} alt="" loading="lazy" />
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  )
-}
-
-export function VerticalsSection() {
-  const ref = useRef(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
-  const cards = verticalCards.map((v, i) => ({ ...v, imgs: [ [team, techtouch, network], [techtouch, network, team], [network, team, techtouch] ][i % 3] }))
-  return (
-    <section className="stack2" id="verticals" ref={ref}>
-      <FadeIn as="h2" y={40} className="hero-heading giant">
-        Verticals
-      </FadeIn>
-      {cards.map((v, i) => (
-        <StackCard
-          key={v.num}
-          v={v}
-          index={i}
-          total={cards.length}
-          progress={scrollYProgress}
-          range={[i / cards.length, 1]}
-          targetScale={1 - (cards.length - 1 - i) * 0.03}
-        />
-      ))}
-    </section>
-  )
-}
-
-/* ─────────────────────── ASK ASHA (dark) ─────────────────────── */
+/* ─────────────────────── ASK ASHA (light) ─────────────────────── */
 export function AshaSection() {
   const [text, setText] = useState('')
   const [typing, setTyping] = useState(false)
@@ -205,7 +312,6 @@ export function AshaSection() {
   const timer = useRef(null)
   const started = useRef(false)
   const secRef = useRef(null)
-
   const speak = useCallback((full) => {
     clearInterval(timer.current)
     setText('')
@@ -220,7 +326,6 @@ export function AshaSection() {
       }
     }, 16)
   }, [])
-
   useEffect(() => {
     const el = secRef.current
     const io = new IntersectionObserver(
@@ -240,31 +345,30 @@ export function AshaSection() {
       clearInterval(timer.current)
     }
   }, [speak])
-
   const ask = (q) => {
     setActiveQ(q.id)
     speak(q.a)
   }
-
   return (
-    <section className="asha2" id="asha" ref={secRef}>
-      <div className={`asha2-photo ${typing ? 'talking' : ''}`}>
+    <section className="asha3" id="asha" ref={secRef}>
+      <div className={`asha3-photo ${typing ? 'talking' : ''}`}>
+        <div className="halo3" />
         <img src={portrait} alt="Asha — virtual hiring guide" />
       </div>
-      <div className="asha2-panel">
-        <FadeIn as="h2" y={30} className="hero-heading med">
-          Ask Asha
+      <div className="asha3-panel">
+        <FadeIn as="h2" className="h2-3">
+          Meet <em className="serif-it">Asha.</em>
         </FadeIn>
-        <p className="asha2-sub">
+        <p className="mono-line dim">
           {guide.name} · {guide.role}
         </p>
-        <div className="asha2-bubble">
+        <div className="asha3-bubble lg-glass">
           <p>
             {text}
-            {typing && <span className="caret" />}
+            {typing && <span className="caret3" />}
           </p>
         </div>
-        <div className="asha2-qs">
+        <div className="asha3-qs">
           {guide.questions.map((q) => (
             <button key={q.id} className={activeQ === q.id ? 'active' : ''} onClick={() => ask(q)}>
               {q.q}
@@ -276,17 +380,17 @@ export function AshaSection() {
   )
 }
 
-/* ─────────────────────── CONTACT + FOOTER ─────────────────────── */
+/* ─────────────────────── CONTACT + FOOTER (light glass) ─────────────────────── */
 const maps = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`
 export function ContactSection() {
   return (
-    <section className="contact2" id="contact">
-      <FadeIn as="h2" y={40} className="hero-heading giant">
-        Contact
+    <section className="contact3" id="contact">
+      <FadeIn as="h2" className="h2-3 center">
+        Let's build your team, <em className="serif-it">together.</em>
       </FadeIn>
-      <div className="c2-grid">
-        <FadeIn className="c2-card" delay={0}>
-          <div className="c2-ic">
+      <div className="c3-grid">
+        <FadeIn className="c3-card lg-glass" delay={0}>
+          <div className="c3-ic">
             <Icon name="phone" />
           </div>
           <h3>Call us</h3>
@@ -294,45 +398,44 @@ export function ContactSection() {
           <a href={`tel:${company.phones[1].replace(/\s/g, '')}`}>{company.phones[1]}</a>
           <small>{company.leadership.map((l) => `${l.name} · ${l.role}`).join(' — ')}</small>
         </FadeIn>
-        <FadeIn className="c2-card" delay={0.1}>
-          <div className="c2-ic">
+        <FadeIn className="c3-card lg-glass" delay={0.1}>
+          <div className="c3-ic">
             <Icon name="mail" />
           </div>
           <h3>Email</h3>
           <a href={`mailto:${company.email}`}>{company.email}</a>
-          <small>Tell us your roles, volumes and timelines — we take it from there.</small>
+          <small>Tell us your roles, volumes and timelines.</small>
         </FadeIn>
-        <FadeIn className="c2-card" delay={0.2}>
-          <div className="c2-ic">
+        <FadeIn className="c3-card lg-glass" delay={0.2}>
+          <div className="c3-ic">
             <Icon name="pin" />
           </div>
           <h3>Head Office — Kalaburagi</h3>
           <p>{company.offices.hq}</p>
-          <a className="dir2" href={maps(`${company.offices.hq}, Karnataka`)} target="_blank" rel="noreferrer">
+          <a className="dir3" href={maps(`${company.offices.hq}, Karnataka`)} target="_blank" rel="noreferrer">
             Get directions →
           </a>
         </FadeIn>
-        <FadeIn className="c2-card" delay={0.3}>
-          <div className="c2-ic">
+        <FadeIn className="c3-card lg-glass" delay={0.3}>
+          <div className="c3-ic">
             <Icon name="pin" />
           </div>
           <h3>Operations — Bengaluru North</h3>
           <p>{company.offices.ops}</p>
-          <a className="dir2" href={maps(`${company.offices.ops}, Karnataka`)} target="_blank" rel="noreferrer">
+          <a className="dir3" href={maps(`${company.offices.ops}, Karnataka`)} target="_blank" rel="noreferrer">
             Get directions →
           </a>
         </FadeIn>
       </div>
-      <FadeIn className="c2-cta" delay={0.15}>
-        <ContactButton label="Call Now" href={`tel:${company.phones[0].replace(/\s/g, '')}`} />
-        <GhostButton label="Write To Us" href={`mailto:${company.email}`} />
-      </FadeIn>
-      <footer className="foot2">
-        <img src={markNavy} alt="" className="foot2-mark" />
+      <footer className="foot3">
+        <img src={logoNavy} alt="SMN Phoenix" />
+        <b>
+          SMN <span>Phoenix</span> Talent Sourcing LLP
+        </b>
         <p>
-          © 2026 {company.name} · LLP No: {company.llp} · GST: {company.gst}
+          © 2026 · LLP No: {company.llp} · GST: {company.gst}
         </p>
-        <p className="foot2-tag">{company.tagline}</p>
+        <p className="foot3-tag">{company.tagline}</p>
       </footer>
     </section>
   )

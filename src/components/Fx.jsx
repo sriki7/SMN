@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 /** FadeIn — whileInView wrapper (spec: once, margin 50px, ease [0.25,0.1,0.25,1]) */
@@ -68,6 +68,37 @@ export function GhostButton({ label, href = '#contact' }) {
     <a className="btn-ghost" href={href}>
       {label}
     </a>
+  )
+}
+
+/** CharHeading — character-by-character entrance (30ms stagger, 500ms per char). `em` words render in Instrument Serif italic. */
+export function CharHeading({ lines, className = '', charDelay = 30, startDelay = 200 }) {
+  const [go, setGo] = useState(false)
+  useEffect(() => {
+    const t = setTimeout(() => setGo(true), startDelay)
+    return () => clearTimeout(t)
+  }, [startDelay])
+  let count = 0
+  return (
+    <h1 className={className}>
+      {lines.map((line, li) => (
+        <span className="ch-line" key={li}>
+          {[...line.text].map((c, ci) => {
+            const d = count * charDelay
+            count += 1
+            return (
+              <span
+                key={ci}
+                className={`ch ${line.serif ? 'serif-it' : ''} ${go ? 'on' : ''}`}
+                style={{ transitionDelay: `${d}ms` }}
+              >
+                {c === ' ' ? ' ' : c}
+              </span>
+            )
+          })}
+        </span>
+      ))}
+    </h1>
   )
 }
 
