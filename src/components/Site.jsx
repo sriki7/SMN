@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { FadeIn, Magnet, AnimatedText, CharHeading } from './Fx.jsx'
-import FluidCanvas from './FluidCanvas.jsx'
+import ShaderBg from './ShaderBg.jsx'
 import Icon from './Icon.jsx'
 import { company, services, guide, aboutText } from '../data/content.js'
 import consultant from '../assets/consultant.webp'
+import manPortrait from '../assets/man-portrait.webp'
 import portrait from '../assets/consultant-portrait.webp'
 import logoNavy from '../assets/logo-mark-navy.png'
 import team from '../assets/team.webp'
@@ -39,7 +40,7 @@ export function HeroSection() {
   const [menu, setMenu] = useState(false)
   return (
     <section className="hero3" id="top">
-      <FluidCanvas />
+      <ShaderBg />
       <div className="rise" aria-hidden="true">
         {Array.from({ length: 9 }).map((_, i) => (
           <i key={i} style={{ left: `${6 + i * 11}%`, animationDelay: `${-i * 1.9}s`, animationDuration: `${10 + (i % 4) * 3}s` }} />
@@ -274,6 +275,11 @@ export function AboutSection() {
             <br />
             People
           </small>
+          <div className="duo">
+            <img src={portrait} alt="SMN consultant" />
+            <img src={manPortrait} alt="SMN consultant" />
+          </div>
+          <small className="duo-cap">Your hiring team</small>
         </FadeIn>
         <AnimatedText className="about3-big" text={aboutText} />
       </div>
@@ -342,12 +348,12 @@ export function ServicesSection() {
 
 /* ─────────────────── VERTICALS — Apple bento (text glass tiles) ─────────────────── */
 const VERTS = [
-  ['Healthcare Staffing', 'Doctors, nurses, lab technicians, radiographers, pharmacists, OT technicians.'],
-  ['IT Staffing', 'Software, AI, cybersecurity, cloud, data science, SAP & ERP for tech and GCCs.'],
-  ['Manufacturing', 'Machine operators, quality engineers, production, maintenance, stores & purchase.'],
-  ['Government Projects', 'Data entry operators, health workers, district coordinators, survey teams.'],
-  ['Campus Recruitment', 'Engineering, MBA, ITI, diploma, nursing and paramedical colleges.'],
-  ['International', 'Middle East, Africa, Singapore, Malaysia — subject to licensing requirements.'],
+  ['Healthcare Staffing', 'Doctors, nurses, lab technicians, radiographers, pharmacists, OT technicians.', 'heart'],
+  ['IT Staffing', 'Software, AI, cybersecurity, cloud, data science, SAP & ERP for tech and GCCs.', 'chip'],
+  ['Manufacturing', 'Machine operators, quality engineers, production, maintenance, stores & purchase.', 'factory'],
+  ['Government Projects', 'Data entry operators, health workers, district coordinators, survey teams.', 'flag'],
+  ['Campus Recruitment', 'Engineering, MBA, ITI, diploma, nursing and paramedical colleges.', 'grad'],
+  ['International', 'Middle East, Africa, Singapore, Malaysia — subject to licensing requirements.', 'globe'],
 ]
 export function VerticalsSection() {
   return (
@@ -356,9 +362,11 @@ export function VerticalsSection() {
         Where we <em className="serif-it">lead.</em>
       </FadeIn>
       <div className="vert3-grid">
-        {VERTS.map(([t, d], i) => (
+        {VERTS.map(([t, d, ic], i) => (
           <FadeIn key={t} delay={(i % 3) * 0.1} className="vert3-tile lg-glass">
-            <img src={logoNavy} alt="" />
+            <div className="v3-ic">
+              <Icon name={ic} />
+            </div>
             <h3>{t}</h3>
             <p>{d}</p>
           </FadeIn>
