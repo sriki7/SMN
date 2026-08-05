@@ -5,8 +5,9 @@ const BLOBS = [
   { c: [169, 205, 236], r: 280, x: 0.1, y: 0.85, sx: 0.00017, sy: 0.00023, ph: 2.1 },
   { c: [191, 238, 234], r: 200, x: 0.45, y: 0.4, sx: 0.00025, sy: 0.00019, ph: 4.2 },
   { c: [126, 200, 227], r: 230, x: 0.7, y: 0.75, sx: 0.00019, sy: 0.00026, ph: 1.3 },
+  { c: [96, 196, 190], r: 260, x: 0.25, y: 0.2, sx: 0.00023, sy: 0.0002, ph: 3.4 },
 ]
-const PARTICLES = 26
+const PARTICLES = 34
 
 /** Fluid, mouse-reactive gradient blobs + drifting particles painted on canvas (hero background). */
 export default function FluidCanvas() {
