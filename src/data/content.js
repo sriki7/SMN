@@ -134,6 +134,36 @@ export const techStack = [
   },
 ]
 
+export const guide = {
+  name: 'Asha',
+  role: 'Virtual Hiring Guide · SMN Phoenix',
+  greeting:
+    "Namaste! I'm Asha, your virtual hiring guide at SMN Phoenix. Ask me anything — or tap a question below and I'll walk you through how we build teams.",
+  questions: [
+    {
+      id: 'what',
+      q: 'What does SMN Phoenix do?',
+      gesture: 'wave',
+      a: "We're a full-spectrum HR partner — permanent & contract staffing, outsourcing, payroll, compliance, HR consulting and training. Whether you need one leader or a thousand deployed workers, we handle the complete employee lifecycle.",
+    },
+    {
+      id: 'industries',
+      q: 'Which industries do you serve?',
+      a: 'Seven industries: Healthcare & Life Sciences, Technology & IT, Industrial & Manufacturing, Infrastructure & Logistics, Financial Services, Public Sector & Social, and Consumer & Retail — with dedicated practice areas in healthcare, IT, manufacturing, government projects, campus and international recruitment.',
+    },
+    {
+      id: 'why',
+      q: 'Why choose SMN Phoenix?',
+      a: "Technology from Day 1 — ATS-driven pipelines, AI resume screening, HRMS & payroll software, biometric attendance and analytics dashboards — plus full statutory compliance (PF, ESI, PT, CLRA, POSH) and leadership with deep healthcare, diagnostics and industrial expertise.",
+    },
+    {
+      id: 'start',
+      q: 'How do we get started?',
+      a: "Easy — write to smnpheonixtalentsourcingllp@gmail.com or call +91 99727 75777 / +91 97400 77707. Tell us your roles, volumes and timelines, and we'll take it from understanding to deployment. Let's build your team, together!",
+    },
+  ],
+}
+
 export const processSteps = [
   {
     title: 'Understand',

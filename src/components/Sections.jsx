@@ -1,15 +1,18 @@
 import Reveal from './Reveal.jsx'
 import Icon from './Icon.jsx'
+import { Magnetic } from './Ambient.jsx'
 import { industries, services, spectrum, verticals, techStack, processSteps } from '../data/content.js'
 import logoWhite from '../assets/logo-mark-white.png'
 
-/* tilt-on-hover for cards (same behaviour as approved mockup) */
+/* tilt + cursor-spotlight on cards */
 function tiltMove(e) {
   const c = e.currentTarget
   const r = c.getBoundingClientRect()
   const x = (e.clientX - r.left) / r.width - 0.5
   const y = (e.clientY - r.top) / r.height - 0.5
   c.style.transform = `translateY(-10px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`
+  c.style.setProperty('--mx', `${e.clientX - r.left}px`)
+  c.style.setProperty('--my', `${e.clientY - r.top}px`)
 }
 function tiltLeave(e) {
   e.currentTarget.style.transform = ''
@@ -151,14 +154,19 @@ export function Process() {
           <h2>From brief to deployed workforce.</h2>
         </Reveal>
       </div>
-      <div className="steps">
-        {processSteps.map((p, i) => (
-          <Reveal className="st" key={p.title} delay={i * 90}>
-            <b>{p.title}</b>
-            <p>{p.text}</p>
-          </Reveal>
-        ))}
-      </div>
+      <Reveal className="steps-outer">
+        <div className="pline">
+          <i />
+        </div>
+        <div className="steps">
+          {processSteps.map((p, i) => (
+            <Reveal className="st" key={p.title} delay={i * 120}>
+              <b>{p.title}</b>
+              <p>{p.text}</p>
+            </Reveal>
+          ))}
+        </div>
+      </Reveal>
     </section>
   )
 }
@@ -170,9 +178,11 @@ export function CtaBand() {
         <img src={logoWhite} alt="" />
         <h2>Hire one leader or deploy a thousand workers.</h2>
         <p>Whatever the workforce challenge, SMN Phoenix is your trusted partner. Let's build your team, together.</p>
-        <a href="#contact">
-          <button className="btnw">Partner With Us →</button>
-        </a>
+        <Magnetic>
+          <a href="#contact">
+            <button className="btnw">Partner With Us →</button>
+          </a>
+        </Magnetic>
       </div>
     </Reveal>
   )

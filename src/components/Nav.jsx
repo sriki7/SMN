@@ -5,6 +5,7 @@ const LINKS = [
   ['#services', 'Services'],
   ['#verticals', 'Verticals'],
   ['#tech', 'Digital Edge'],
+  ['#guide', 'Ask Asha'],
   ['#process', 'Process'],
   ['#contact', 'Contact'],
 ]

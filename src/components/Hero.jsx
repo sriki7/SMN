@@ -1,5 +1,6 @@
-import { useEffect } from 'react'
 import Icon from './Icon.jsx'
+import FluidCanvas from './FluidCanvas.jsx'
+import { Magnetic } from './Ambient.jsx'
 import logoNavy from '../assets/logo-mark-navy.png'
 
 const CHIPS = [
@@ -11,25 +12,11 @@ const CHIPS = [
 
 const NOTES = ['Registered LLP · GST compliant', 'Kalaburagi HQ · Bengaluru Ops', 'Blue collar to CXO']
 
-/** Hero: staggered headline, gradient blobs with gentle scroll parallax, floating glass chips around the phoenix orb. */
+/** Hero: staggered headline, fluid mouse-reactive gradient canvas, floating glass chips around the phoenix orb. */
 export default function Hero() {
-  useEffect(() => {
-    const blobs = document.querySelectorAll('.blob')
-    const onScroll = () => {
-      const y = window.scrollY
-      blobs.forEach((b, i) => {
-        b.style.translate = `0 ${y * (0.06 + i * 0.03)}px`
-      })
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   return (
     <header id="top">
-      <div className="blob b1" />
-      <div className="blob b2" />
-      <div className="blob b3" />
+      <FluidCanvas />
       <svg className="wavelines" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
         <path d="M-100 700 C 300 620, 500 830, 900 720 S 1400 560, 1600 640" stroke="#cfe2ee" strokeWidth="1.4" />
         <path d="M-100 740 C 300 660, 520 870, 920 760 S 1420 600, 1620 680" stroke="#d8ebe9" strokeWidth="1.2" />
@@ -67,12 +54,16 @@ export default function Hero() {
             compliance.
           </p>
           <div className="hero-cta">
-            <a href="#contact">
-              <button className="cta big">Hire Talent →</button>
-            </a>
-            <a href="#contact">
-              <button className="btn2">I'm Looking for a Job</button>
-            </a>
+            <Magnetic>
+              <a href="#contact">
+                <button className="cta big">Hire Talent →</button>
+              </a>
+            </Magnetic>
+            <Magnetic strength={0.2}>
+              <a href="#contact">
+                <button className="btn2">I'm Looking for a Job</button>
+              </a>
+            </Magnetic>
           </div>
           <div className="hero-note">
             {NOTES.map((n) => (
@@ -85,6 +76,8 @@ export default function Hero() {
         </div>
 
         <div className="stage">
+          <div className="oring o1" />
+          <div className="oring o2" />
           <div className="orb">
             <img src={logoNavy} alt="SMN Phoenix mark" />
           </div>
