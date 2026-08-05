@@ -164,6 +164,30 @@ export const guide = {
   ],
 }
 
+export const aboutText =
+  "SMN Phoenix Talent Sourcing LLP is a full-spectrum HR partner — from one CXO hire to a thousand deployed workers. We connect the right talent with the right opportunities, with speed, precision and full statutory compliance. Let's build your team, together!"
+
+export const verticalCards = [
+  {
+    num: '01',
+    cat: 'Key Vertical',
+    title: 'Healthcare Staffing',
+    text: "Doctors, nurses, lab technicians, radiographers, pharmacists, OT technicians — powered by leadership's deep diagnostics expertise.",
+  },
+  {
+    num: '02',
+    cat: 'Tech & GCC',
+    title: 'IT & Technology',
+    text: 'Software engineers, AI, cybersecurity, cloud, data science, SAP & ERP specialists for tech companies and GCCs.',
+  },
+  {
+    num: '03',
+    cat: 'Industrial & FMCG',
+    title: 'Manufacturing',
+    text: 'Machine operators, quality engineers, production, maintenance, stores and purchase roles across industrial and FMCG sectors.',
+  },
+]
+
 export const processSteps = [
   {
     title: 'Understand',
