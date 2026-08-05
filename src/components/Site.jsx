@@ -27,10 +27,24 @@ import banner4 from '../assets/banner4.webp'
 import banner5 from '../assets/banner5.webp'
 
 /* ─────────────────────────── NAV (floating liquid-glass pill) ─────────────────────────── */
+const NAV_LINKS = [
+  ['#about', 'About'],
+  ['#services', 'Services'],
+  ['#verticals', 'Verticals'],
+  ['#asha', 'Ask Asha'],
+  ['#contact', 'Contact'],
+]
+
 export function HeroSection() {
+  const [menu, setMenu] = useState(false)
   return (
     <section className="hero3" id="top">
       <FluidCanvas />
+      <div className="rise" aria-hidden="true">
+        {Array.from({ length: 9 }).map((_, i) => (
+          <i key={i} style={{ left: `${6 + i * 11}%`, animationDelay: `${-i * 1.9}s`, animationDuration: `${10 + (i % 4) * 3}s` }} />
+        ))}
+      </div>
       <FadeIn as="nav" y={-16} className="nav3 lg-glass">
         <a className="brand3" href="#top">
           <img src={logoNavy} alt="SMN Phoenix logo" />
@@ -39,16 +53,29 @@ export function HeroSection() {
           </span>
         </a>
         <div className="nav3-links">
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#verticals">Verticals</a>
-          <a href="#asha">Ask Asha</a>
-          <a href="#contact">Contact</a>
+          {NAV_LINKS.map(([h, l]) => (
+            <a key={h} href={h}>
+              {l}
+            </a>
+          ))}
         </div>
-        <a className="btn-dark" href="#contact">
-          Hire Talent
-        </a>
+        <div className="nav3-right">
+          <a className="btn-dark" href="#contact">
+            Hire Talent
+          </a>
+          <button className={`burger ${menu ? 'x' : ''}`} aria-label="Menu" onClick={() => setMenu((v) => !v)}>
+            <i />
+            <i />
+          </button>
+        </div>
       </FadeIn>
+      <div className={`mmenu lg-glass ${menu ? 'open' : ''}`}>
+        {NAV_LINKS.map(([h, l], i) => (
+          <a key={h} href={h} style={{ transitionDelay: menu ? `${90 + i * 55}ms` : '0ms' }} onClick={() => setMenu(false)}>
+            {l}
+          </a>
+        ))}
+      </div>
 
       {/* living background layer: consultant over fluid canvas */}
       <FadeIn delay={0.5} y={40} className="hero3-person">
@@ -171,23 +198,21 @@ export function MarqueeSection() {
   const secRef = useRef(null)
   const r1 = useRef(null)
   const r2 = useRef(null)
+  /* continuous drift + scroll-driven offset — rows never sit still */
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     let raf = 0
-    const onScroll = () => {
-      cancelAnimationFrame(raf)
-      raf = requestAnimationFrame(() => {
-        const top = secRef.current?.offsetTop ?? 0
-        const off = (window.scrollY - top + window.innerHeight) * 0.3
-        if (r1.current) r1.current.style.transform = `translateX(${off - 260}px)`
-        if (r2.current) r2.current.style.transform = `translateX(${-(off - 260)}px)`
-      })
+    const t0 = performance.now()
+    const loop = (t) => {
+      const drift = (t - t0) * 0.018
+      const top = secRef.current?.offsetTop ?? 0
+      const off = (window.scrollY - top + window.innerHeight) * 0.3
+      if (r1.current) r1.current.style.transform = `translateX(${-((off + drift) % 1200) - 60}px)`
+      if (r2.current) r2.current.style.transform = `translateX(${((off + drift) % 1200) - 1260}px)`
+      raf = requestAnimationFrame(loop)
     }
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      cancelAnimationFrame(raf)
-      window.removeEventListener('scroll', onScroll)
-    }
+    raf = requestAnimationFrame(loop)
+    return () => cancelAnimationFrame(raf)
   }, [])
   const row = (arr) =>
     [...arr, ...arr].map(([label, desc, icon, img], i) => (

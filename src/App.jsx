@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import Lenis from 'lenis'
+import { CursorGlow, ScrollProgress } from './components/Ambient.jsx'
 import { HeroSection, MarqueeSection, AboutSection, ServicesSection, VerticalsSection, AshaSection, ContactSection } from './components/Site.jsx'
 
 export default function App() {
@@ -32,6 +33,8 @@ export default function App() {
 
   return (
     <main className="site2">
+      <ScrollProgress />
+      <CursorGlow />
       <HeroSection />
       <MarqueeSection />
       <AboutSection />

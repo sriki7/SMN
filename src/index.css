@@ -206,3 +206,53 @@ button{font-family:inherit}
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   .ch{opacity:1;transform:none}
 }
+
+/* ─────────── ambient motion (light) ─────────── */
+.scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;background:var(--grad);transform-origin:left;transform:scaleX(0);z-index:80;pointer-events:none}
+.cursor-glow{position:fixed;top:0;left:0;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(58,155,220,.12),rgba(124,192,240,.05) 45%,transparent 68%);pointer-events:none;z-index:1;will-change:transform}
+@media(pointer:coarse){.cursor-glow{display:none}}
+.magnetic{display:inline-block;will-change:transform}
+.rise{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.rise i{position:absolute;bottom:-12px;width:6px;height:6px;border-radius:50%;background:rgba(58,155,220,.4);box-shadow:0 0 10px rgba(58,155,220,.4);animation:riseup3 linear infinite}
+.rise i:nth-child(odd){width:4px;height:4px;background:rgba(4,64,110,.28)}
+@keyframes riseup3{0%{transform:translateY(0);opacity:0}12%{opacity:.8}100%{transform:translateY(-102vh);opacity:0}}
+
+/* marquee card hover physics */
+.tile3{transition:transform .35s var(--ease),box-shadow .35s}
+.tile3:hover{transform:translateY(-7px) scale(1.015);box-shadow:0 22px 44px rgba(6,44,74,.2)}
+.tile3:hover .t3-ic{transform:translateY(-3px)}
+.t3-ic{transition:transform .35s var(--ease)}
+
+/* shimmer sweep on serif gradient accents in headings */
+.hero3-h1 .serif-it,.h2-3 .serif-it{background:linear-gradient(100deg,#04406e 0%,#0A6BA0 34%,#3A9BDC 46%,#7CC0F0 50%,#3A9BDC 54%,#0A6BA0 66%,#04406e 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shim3 6s linear infinite}
+@keyframes shim3{to{background-position:-220% 0}}
+
+/* mobile nav: burger + dropdown menu */
+.nav3-right{display:flex;align-items:center;gap:10px}
+.burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;border:none;background:transparent;cursor:pointer;padding:9px}
+.burger i{display:block;height:2px;border-radius:2px;background:#1d1d1f;transition:transform .3s cubic-bezier(.77,0,.175,1)}
+.burger.x i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.burger.x i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.mmenu{background:rgba(255,255,255,.88);position:fixed;top:76px;left:0;right:0;margin:0 auto;width:min(94vw,420px);border-radius:22px;z-index:59;display:none;flex-direction:column;padding:10px;opacity:0;transform:translateY(-8px) scale(.98);pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.mmenu a{padding:13px 16px;border-radius:12px;font-size:15px;font-weight:500;color:#1d1d1f;opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease),transform .4s var(--ease),background .2s}
+.mmenu a:hover{background:rgba(0,0,0,.05)}
+.mmenu.open{opacity:1;transform:none;pointer-events:auto}
+.mmenu.open a{opacity:1;transform:none}
+@media(max-width:900px){
+  .burger{display:flex}
+  .mmenu{display:flex}
+  .nav3 .btn-dark{padding:9px 16px;font-size:12px}
+}
+
+/* svh fallback + mobile polish */
+.hero3{min-height:100vh}
+@supports(height:100svh){.hero3{min-height:100svh}}
+@media(max-width:640px){
+  .meta3{padding-top:96px;gap:14px}
+  .meta3 > :nth-child(2){display:none}
+  .hero3-h1{font-size:clamp(30px,9.4vw,44px)}
+  .hero3-strip p{font-size:11px}
+  .cred3 span{padding:6px 10px;font-size:10.5px}
+  .tile3{width:78vw}
+  .asha3-photo img{width:min(240px,62vw)}
+}
