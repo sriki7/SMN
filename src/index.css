@@ -278,3 +278,22 @@ button{font-family:inherit}
 /* verticals icon chips */
 .v3-ic{width:44px;height:44px;border-radius:13px;background:var(--grad);display:flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:0 10px 22px rgba(10,107,160,.3)}
 .v3-ic svg{width:20px;height:20px;stroke:#fff;fill:none}
+
+/* ── contact offices + maps ── */
+.c3-offices{max-width:1024px;margin:16px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:980px){.c3-offices{grid-template-columns:1fr}}
+.c3-office .c3-city{display:block;font-style:normal;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin:-4px 0 8px}
+.c3-office p{min-height:66px}
+@media(max-width:980px){.c3-office p{min-height:0}}
+.c3-map{margin:12px 0 10px;border-radius:16px;overflow:hidden;border:1px solid rgba(10,107,160,.14);box-shadow:0 10px 26px rgba(6,44,74,.10)}
+.c3-map iframe{display:block;width:100%;height:190px;border:0;filter:saturate(.92)}
+.foot3 p a{color:var(--navy);font-weight:500}
+.foot3 p a:hover{color:var(--teal)}
+
+/* ── strategic partner network card ── */
+.partner3{width:100%;max-width:1100px;margin-top:clamp(36px,5vw,56px);border-radius:24px;padding:clamp(22px,3vw,34px);display:flex;gap:20px;align-items:flex-start}
+.partner3-ic{flex:0 0 auto;width:52px;height:52px;border-radius:16px;background:var(--grad);display:flex;align-items:center;justify-content:center}
+.partner3-ic svg{width:24px;height:24px;stroke:#fff;fill:none}
+.partner3-tag{display:block;font-style:normal;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+.partner3 p{font-size:15px;line-height:1.75;color:var(--tx2,#3a3a3c)}
+@media(max-width:640px){.partner3{flex-direction:column;gap:14px}}

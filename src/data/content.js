@@ -8,12 +8,35 @@ export const company = {
   llp: 'ACP-4314',
   gst: '29AFQFS6473J1Z0',
   website: 'www.smnphoenixtalent.com',
-  email: 'smnpheonixtalentsourcingllp@gmail.com', // spelling as printed in company documents — confirm before launch
-  phones: ['+91 99727 75777', '+91 97400 77707'], // attribution differs between documents — confirm before launch
-  offices: {
-    hq: '# 1/37, Havalaga, Afzalpur, Kalaburagi – 585 301',
-    ops: '# 09, Khata No. 271/34/09, Madanayakanahalli, Totadaguddada Halli, Dasanapura Hobli, Bengaluru North – 560 073',
-  },
+  email: 'connect@smnphoenixtalent.com',
+  phones: ['+91 94825 77702', '+91 97400 77707'],
+  offices: [
+    {
+      key: 'registered',
+      name: 'Registered Office',
+      city: 'Afzalpur, Kalaburagi',
+      address: '# 1/37, Havalaga, Afzalpur, Kalaburagi, Karnataka – 585 301',
+      mapsQuery: '1/37, Havalaga, Afzalpur, Kalaburagi, Karnataka 585301',
+    },
+    {
+      key: 'branch',
+      name: 'Branch Office',
+      city: 'Kalaburagi',
+      address:
+        'Shop No. 7, 1st Floor, “Nazma Tower”, beside P&T Tank, opposite HDFC Bank, Old Jewargi Road, Kalaburagi, Karnataka – 585 102',
+      mapsQuery: 'Nazma Tower, Old Jewargi Road, Kalaburagi, Karnataka 585102',
+    },
+    {
+      key: 'corporate',
+      name: 'Corporate Office',
+      city: 'Bengaluru',
+      address:
+        '# 09, Khata No. 271/34/09, Madanayakanahalli, Totadaguddada Halli, Dasanapura Hobli, Bengaluru, Karnataka – 560 073',
+      mapsQuery: 'Madanayakanahalli, Totadaguddada Halli, Dasanapura Hobli, Bengaluru, Karnataka 560073',
+    },
+  ],
+  partnersText:
+    'We have strategic partners with experienced civil, electrical, mechanical, and industrial contractors, enabling us to provide comprehensive workforce and project support services across sectors. This allows our clients to benefit from integrated manpower and operational solutions under a single trusted partner.',
   leadership: [
     { name: 'Shrishail M Natikar', role: 'Managing Director' },
     { name: 'Shivakumar M Natikar', role: 'Promoter' },
@@ -159,7 +182,7 @@ export const guide = {
     {
       id: 'start',
       q: 'How do we get started?',
-      a: "Easy — write to smnpheonixtalentsourcingllp@gmail.com or call +91 99727 75777 / +91 97400 77707. Tell us your roles, volumes and timelines, and we'll take it from understanding to deployment. Let's build your team, together!",
+      a: "Easy — write to connect@smnphoenixtalent.com or call +91 94825 77702 / +91 97400 77707. Tell us your roles, volumes and timelines, and we'll take it from understanding to deployment. Let's build your team, together!",
     },
   ],
 }

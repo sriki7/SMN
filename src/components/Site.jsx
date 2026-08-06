@@ -283,6 +283,15 @@ export function AboutSection() {
         </FadeIn>
         <AnimatedText className="about3-big" text={aboutText} />
       </div>
+      <FadeIn className="partner3 lg-glass" delay={0.1}>
+        <div className="partner3-ic">
+          <Icon name="building" />
+        </div>
+        <div>
+          <em className="partner3-tag">Strategic Partner Network</em>
+          <p>{company.partnersText}</p>
+        </div>
+      </FadeIn>
     </section>
   )
 }
@@ -453,7 +462,8 @@ export function AshaSection() {
 }
 
 /* ─────────────────────── CONTACT + FOOTER (light glass) ─────────────────────── */
-const maps = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`
+const mapsLink = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`
+const mapsEmbed = (q) => `https://www.google.com/maps?q=${encodeURIComponent(q)}&output=embed`
 export function ContactSection() {
   return (
     <section className="contact3" id="contact">
@@ -466,8 +476,11 @@ export function ContactSection() {
             <Icon name="phone" />
           </div>
           <h3>Call us</h3>
-          <a href={`tel:${company.phones[0].replace(/\s/g, '')}`}>{company.phones[0]}</a>
-          <a href={`tel:${company.phones[1].replace(/\s/g, '')}`}>{company.phones[1]}</a>
+          {company.phones.map((p) => (
+            <a key={p} href={`tel:${p.replace(/\s/g, '')}`}>
+              {p}
+            </a>
+          ))}
           <small>{company.leadership.map((l) => `${l.name} · ${l.role}`).join(' — ')}</small>
         </FadeIn>
         <FadeIn className="c3-card lg-glass" delay={0.1}>
@@ -478,32 +491,39 @@ export function ContactSection() {
           <a href={`mailto:${company.email}`}>{company.email}</a>
           <small>Tell us your roles, volumes and timelines.</small>
         </FadeIn>
-        <FadeIn className="c3-card lg-glass" delay={0.2}>
-          <div className="c3-ic">
-            <Icon name="pin" />
-          </div>
-          <h3>Head Office — Kalaburagi</h3>
-          <p>{company.offices.hq}</p>
-          <a className="dir3" href={maps(`${company.offices.hq}, Karnataka`)} target="_blank" rel="noreferrer">
-            Get directions →
-          </a>
-        </FadeIn>
-        <FadeIn className="c3-card lg-glass" delay={0.3}>
-          <div className="c3-ic">
-            <Icon name="pin" />
-          </div>
-          <h3>Operations — Bengaluru North</h3>
-          <p>{company.offices.ops}</p>
-          <a className="dir3" href={maps(`${company.offices.ops}, Karnataka`)} target="_blank" rel="noreferrer">
-            Get directions →
-          </a>
-        </FadeIn>
+      </div>
+      <div className="c3-offices">
+        {company.offices.map((o, i) => (
+          <FadeIn key={o.key} className="c3-card c3-office lg-glass" delay={0.08 * i}>
+            <div className="c3-ic">
+              <Icon name="pin" />
+            </div>
+            <h3>{o.name}</h3>
+            <em className="c3-city">{o.city}</em>
+            <p>{o.address}</p>
+            <div className="c3-map">
+              <iframe
+                src={mapsEmbed(o.mapsQuery)}
+                title={`${o.name} — Google Map`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+            <a className="dir3" href={mapsLink(o.mapsQuery)} target="_blank" rel="noreferrer">
+              Open in Google Maps →
+            </a>
+          </FadeIn>
+        ))}
       </div>
       <footer className="foot3">
         <img src={logoNavy} alt="SMN Phoenix" />
         <b>
           SMN <span>Phoenix</span> Talent Sourcing LLP
         </b>
+        <p>
+          <a href={`mailto:${company.email}`}>{company.email}</a> · {company.website}
+        </p>
         <p>
           © 2026 · LLP No: {company.llp} · GST: {company.gst}
         </p>
